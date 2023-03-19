@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "17"
+
+sudo: required
+
+cache: yarn
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - yarn
+      before_deploy: sudo apt-get update && sudo apt-get install -y sshpass
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: docker build --no-cache=true -t bellinghamchess . &&
+          docker login www.gradinware.com --username '${REGISTRY_USERNAME}' --password '${REGISTRY_PASSWORD}' &&
+          docker tag bellinghamchess www.gradinware.com/gradinware/bellinghamchess:${TRAVIS_TAG} &&
+          docker push www.gradinware.com/gradinware/bellinghamchess:${TRAVIS_TAG}
+        on:
+          tags: true
+
+stages:
+  - build

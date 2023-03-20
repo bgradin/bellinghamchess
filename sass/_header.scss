@@ -1,0 +1,52 @@
+body > header {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 0;
+  background: none;
+
+  .branding {
+    flex: initial;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 4rem;
+      margin-right: 12px;
+    }
+
+    .organization {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+
+  > nav {
+    flex: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+
+    a, .nav-link {
+      border: 0;
+      margin: 0 1rem;
+      padding: 0;
+    }
+
+    > .menu {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .has-children ul {
+        display: none;
+      }
+    }
+
+    > .account-actions {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

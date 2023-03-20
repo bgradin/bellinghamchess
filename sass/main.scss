@@ -1,3 +1,20 @@
-.container {
-  padding: 0 36px;
+@import "themify";
+@import "header";
+@import "footer";
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  grid-template-columns: none;
+
+  > * {
+    grid-column: auto;
+  }
+}
+
+main {
+  padding: 1.5rem 1rem;
 }

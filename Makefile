@@ -5,11 +5,17 @@ CONTAINER = bellinghamchess-dev
 
 .PHONY: stop start destroy rebuild create help frontend node_modules
 
-node_modules:
-	yarn
-
 frontend: node_modules ## Compile frontend
+	mkdir -p src/BellinghamChessClub/wwwroot/js
 	mkdir -p src/BellinghamChessClub/wwwroot/css
+	./node_modules/esbuild-linux-64/bin/esbuild scripts/main.js \
+		--bundle \
+		--minify \
+		--sourcemap \
+		--loader:.js=jsx \
+		--jsx=transform \
+		--target=chrome58,firefox57,safari11,edge18 \
+		--outfile=src/BellinghamChessClub/wwwroot/js/main.min.js
 	npx sass --style=compressed \
 		sass/main.scss:src/BellinghamChessClub/wwwroot/css/main.min.css
 

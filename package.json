@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Bellingham Chess Club prototype",
   "dependencies": {
+    "esbuild-linux-64": "0.15.14",
+    "masonry-layout": "4.2.2",
     "sass": "^1.57.1"
   },
   "repository": {

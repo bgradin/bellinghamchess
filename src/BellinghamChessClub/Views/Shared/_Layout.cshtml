@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>@ViewBag.Title</title>
 
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
-    <link rel="stylesheet" href="~/css/main.min.css" />
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+  <link rel="stylesheet" href="~/css/main.min.css" />
 
-    @RenderSection("head", required: false)
+  @RenderSection("head", required: false)
 </head>
 <body>
-    <div class="container">
-        @RenderBody()
+  <header>
+    <div class="branding">
+      <img class="logo" src="images/logo.svg" alt="Bellingham Knights Chess Club">
+      <div class="organization">Bellingham Knights<br>Chess Club</div>
     </div>
+    <nav>
+      <ul class="menu">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li class="has-children">
+          <div class="nav-link">Events<span class="chevron ti-angle-down"></span></div>
+          <ul>
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/">Tournaments</a></li>
+          </ul>
+        </li>
+        <li class="has-children">
+          <div class="nav-link">About<span class="chevron ti-angle-down"></span></div>
+          <ul>
+            <li><a href="/">Club</a></li>
+            <li><a href="/">News</a></li>
+            <li><a href="/">Press</a></li>
+            <li><a href="/">Blog</a></li>
+            <li><a href="/">Photos</a></li>
+            <li><a href="/">Resources</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/">Contact</a>
+        </li>
+      </ul>
+      <div class="account-actions">
+        <a href="">Login</a> | <a href="">Register</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    @RenderBody()
+  </main>
+  <footer>
+    Copyright &copy; 2023 Bellingham Knights Chess Club. All rights reserved.
+  </footer>
 </body>
 </html>

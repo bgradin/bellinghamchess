@@ -18,3 +18,8 @@ Run `make` to start a dev server at [localhost:8080](http://localhost:8080). `ma
 ## Deployment
 
 All builds trigger Travis CI, but tags will additionally deploy the site code to my VPS.
+
+## Open questions
+
+- Should players be able to self-register, or does an admin need to do it?
+- Does the ladder need to be displayed as an image, or can it be displayed as plain text?

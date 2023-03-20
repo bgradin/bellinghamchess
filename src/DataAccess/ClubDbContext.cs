@@ -14,6 +14,7 @@ namespace BellinghamChessClub.DataAccess
     {
       get; set;
     }
+
     public DbSet<Game> Games
     {
       get; set;

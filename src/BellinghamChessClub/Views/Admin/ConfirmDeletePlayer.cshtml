@@ -1,0 +1,11 @@
+@model Player
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Confirm Player Deletion";
+}
+
+<h2>Confirm Player Deletion</h2>
+
+<p>Are you sure you would like to delete the following player? @Model.FirstName @Model.LastName</p>
+
+<p><a asp-action="DeletePlayer" asp-route-id="@Model.Id">Delete</a> | <a asp-action="Index">Cancel</a></p>

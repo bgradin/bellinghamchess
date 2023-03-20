@@ -15,33 +15,33 @@ namespace BellinghamChessClub.DataAccess
       _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<Game>> GetAllGamesAsync()
+    public async Task<IEnumerable<Game>> GetAllGames()
     {
       return await _dbContext.Games.ToListAsync();
     }
 
-    public async Task<Game> GetGameByIdAsync(int id)
+    public async Task<Game> GetGameById(int id)
     {
       return await _dbContext.Games.FindAsync(id);
     }
 
-    public async Task<Game> AddGameAsync(Game game)
+    public async Task<Game> AddGame(Game game)
     {
       await _dbContext.Games.AddAsync(game);
       await _dbContext.SaveChangesAsync();
       return game;
     }
 
-    public async Task<Game> UpdateGameAsync(Game game)
+    public async Task<Game> UpdateGame(Game game)
     {
       _dbContext.Entry(game).State = EntityState.Modified;
       await _dbContext.SaveChangesAsync();
       return game;
     }
 
-    public async Task<Game> DeleteGameAsync(int id)
+    public async Task<Game> DeleteGame(int id)
     {
-      var game = await GetGameByIdAsync(id);
+      var game = await GetGameById(id);
       _dbContext.Games.Remove(game);
       await _dbContext.SaveChangesAsync();
       return game;

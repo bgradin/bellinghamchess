@@ -6,10 +6,11 @@ namespace BellinghamChessClub.DataAccess
 {
   public interface IPlayerRepository
   {
-    Task<IEnumerable<Player>> GetAllPlayersAsync();
-    Task<Player> GetPlayerByIdAsync(int playerId);
-    Task<Player> AddPlayerAsync(Player player);
-    Task<Player> UpdatePlayerAsync(Player player);
-    Task<Player> DeletePlayerAsync(int playerId);
+    int PlayerCount { get; }
+    Task<IEnumerable<Player>> GetAllPlayers();
+    Task<Player> GetPlayerById(int playerId);
+    Task<Player> AddPlayer(Player player);
+    Task<Player> UpdatePlayer(Player player);
+    Task<Player> DeletePlayer(int playerId);
   }
 }

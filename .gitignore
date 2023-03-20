@@ -7,3 +7,4 @@ bin/
 obj/
 
 src/BellinghamChessClub/secrets.json
+src/BellinghamChessClub/wwwroot/css

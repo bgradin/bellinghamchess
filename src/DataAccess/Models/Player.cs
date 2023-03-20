@@ -11,20 +11,27 @@ namespace BellinghamChessClub.Models
 
     [Required]
     [StringLength(100)]
-    public string Name
+    public string FirstName
     {
       get; set;
     }
 
     [Required]
     [StringLength(100)]
+    public string LastName
+    {
+      get; set;
+    }
+
+    [Required]
+    [StringLength(360)]
     public string Email
     {
       get; set;
     }
 
     [Required]
-    public int Rating
+    public int LadderRanking
     {
       get; set;
     }
@@ -32,11 +39,6 @@ namespace BellinghamChessClub.Models
     public bool IsAdmin
     {
       get; set;
-    }
-
-    public void UpdateRating(int newRating)
-    {
-      this.Rating = newRating;
     }
   }
 }

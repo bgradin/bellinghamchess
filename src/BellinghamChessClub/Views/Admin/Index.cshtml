@@ -1,0 +1,37 @@
+@model List<Player>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<h2>Admin Actions</h2>
+
+<ul>
+  <li><a asp-action="AddPlayer">Add Player</a></li>
+</ul>
+
+<h2>Players</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.FirstName @player.LastName</td>
+                <td><a href="mailto:@player.Email">@player.Email</a></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@player.Id">Edit</a> | <a asp-action="ConfirmDeletePlayer" asp-route-id="@player.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -5,6 +5,14 @@ CONTAINER = bellinghamchess-dev
 
 .PHONY: stop start destroy rebuild create help frontend node_modules
 
+node_modules:
+	yarn
+
+frontend: node_modules ## Compile frontend
+	mkdir -p src/BellinghamChessClub/wwwroot/css
+	npx sass --style=compressed \
+		sass/main.scss:src/BellinghamChessClub/wwwroot/css/main.min.css
+
 stop: ## Stop dev server
 	docker stop $(CONTAINER) >/dev/null 2>&1 || true
 

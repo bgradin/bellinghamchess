@@ -1,0 +1,25 @@
+@model IEnumerable<Player>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Ladder";
+}
+
+<h1>Ladder</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.LadderRanking</td>
+                <td>@player.FirstName @player.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>

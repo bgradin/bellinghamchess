@@ -15,33 +15,38 @@ namespace BellinghamChessClub.DataAccess
       _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<Player>> GetAllPlayersAsync()
+    public int PlayerCount
+    {
+      get { return _dbContext.Players.Count(); }
+    }
+
+    public async Task<IEnumerable<Player>> GetAllPlayers()
     {
       return await _dbContext.Players.ToListAsync();
     }
 
-    public async Task<Player> GetPlayerByIdAsync(int playerId)
+    public async Task<Player> GetPlayerById(int playerId)
     {
       return await _dbContext.Players.FindAsync(playerId);
     }
 
-    public async Task<Player> AddPlayerAsync(Player player)
+    public async Task<Player> AddPlayer(Player player)
     {
       await _dbContext.Players.AddAsync(player);
       await _dbContext.SaveChangesAsync();
       return player;
     }
 
-    public async Task<Player> UpdatePlayerAsync(Player player)
+    public async Task<Player> UpdatePlayer(Player player)
     {
       _dbContext.Players.Update(player);
       await _dbContext.SaveChangesAsync();
       return player;
     }
 
-    public async Task<Player> DeletePlayerAsync(int playerId)
+    public async Task<Player> DeletePlayer(int playerId)
     {
-      var player = await GetPlayerByIdAsync(playerId);
+      var player = await GetPlayerById(playerId);
       if (player != null)
       {
         _dbContext.Players.Remove(player);

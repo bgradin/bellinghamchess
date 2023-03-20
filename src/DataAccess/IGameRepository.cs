@@ -6,10 +6,10 @@ namespace BellinghamChessClub.DataAccess
 {
   public interface IGameRepository
   {
-    Task<IEnumerable<Game>> GetAllGamesAsync();
-    Task<Game> GetGameByIdAsync(int gameId);
-    Task<Game> AddGameAsync(Game game);
-    Task<Game> UpdateGameAsync(Game game);
-    Task<Game> DeleteGameAsync(int gameId);
+    Task<IEnumerable<Game>> GetAllGames();
+    Task<Game> GetGameById(int gameId);
+    Task<Game> AddGame(Game game);
+    Task<Game> UpdateGame(Game game);
+    Task<Game> DeleteGame(int gameId);
   }
 }

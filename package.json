@@ -1,0 +1,13 @@
+{
+  "name": "bellinghamchess.gradinware.com",
+  "version": "1.0.0",
+  "description": "Bellingham Chess Club prototype",
+  "dependencies": {
+    "sass": "^1.57.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bgradin/bellinghamchess.git"
+  },
+  "author": "Brian Gradin"
+}

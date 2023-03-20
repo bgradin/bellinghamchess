@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,8 +22,13 @@ namespace BellinghamChessClub
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<ClubDbContext>(options =>
-                options.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+      services.AddDbContext<ClubDbContext>(options => {
+        var dataFile = _config.GetValue<string>("ClubDataFile");
+        var directory = Path.GetDirectoryName(dataFile);
+        Directory.CreateDirectory(directory);
+
+        options.UseSqlite($"Data Source={dataFile}");
+      });
 
       services.AddScoped<IPlayerRepository, PlayerRepository>();
       services.AddScoped<IGameRepository, GameRepository>();
@@ -30,8 +36,10 @@ namespace BellinghamChessClub
       services.AddControllersWithViews();
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ClubDbContext context)
     {
+      context.Database.EnsureCreated();
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();

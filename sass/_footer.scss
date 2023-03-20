@@ -1,7 +1,8 @@
 @use "colors";
 
-footer {
+body > footer {
   border-top: 0;
   background: colors.$gunmetal;
   padding: 1.5rem 1rem;
+  color: colors.$white;
 }
